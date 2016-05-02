@@ -41,9 +41,9 @@ var FlashMessages = (function() {
     //find messages element and add message to it
     document.querySelector('div.messages').appendChild(msgEl);
 
-    //fire transition after 3s
+    //fire transition after 31s
     setTimeout(function() {
-      msgEl.className = msgEl.className += ' hide';
+      msgEl.className += ' hide';
     }, 3000);
   }
 
