@@ -48,29 +48,31 @@ var FlashMessages = (function() {
   };
 })();
 
-//document ready
-document.addEventListener("DOMContentLoaded", function(event) {
+(function() {
+  //document ready
+  document.addEventListener("DOMContentLoaded", function(event) {
 
-  //handle button clicks, add a new message of the given type on click
+    //handle button clicks, add a new message of the given type on click
 
-  document.querySelector('#showInfoBtn')
-    .addEventListener('click', function() {
-      FlashMessages.showMessage('This is an info message', 'info');
-    });
+    document.querySelector('#showInfoBtn')
+      .addEventListener('click', function() {
+        FlashMessages.showMessage('This is an info message', 'info');
+      });
 
-  document.querySelector('#showErrorBtn')
-    .addEventListener('click', function() {
-      FlashMessages.showMessage('This is an error message', 'error');
-    });
+    document.querySelector('#showErrorBtn')
+      .addEventListener('click', function() {
+        FlashMessages.showMessage('This is an error message', 'error');
+      });
 
-  document.querySelector('#showWarnBtn')
-    .addEventListener('click', function() {
-      FlashMessages.showMessage('This is a warning message', 'warn');
-    });
+    document.querySelector('#showWarnBtn')
+      .addEventListener('click', function() {
+        FlashMessages.showMessage('This is a warning message', 'warn');
+      });
 
-  document.querySelector('#showSuccessBtn')
-    .addEventListener('click', function() {
-      FlashMessages.showMessage('This is a success message', 'success');
-    });
+    document.querySelector('#showSuccessBtn')
+      .addEventListener('click', function() {
+        FlashMessages.showMessage('This is a success message', 'success');
+      });
 
-});
+  });
+})();

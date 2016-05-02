@@ -32,6 +32,7 @@ var Modal = (function() {
 
 (function() {
   var promise;
+  
   document.addEventListener("DOMContentLoaded", function(event) {
 
     document.querySelector('#showModalBtn')
