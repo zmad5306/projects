@@ -18,7 +18,7 @@ var Modal = (function() {
   };
   var cancelModal = function() {
     if (promise) {
-      resolve('CANCELLED!!!!');
+      reject(new Error('CANCELLED!!!!'));
     }
     document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
   };
@@ -36,9 +36,9 @@ var Modal = (function() {
     document.querySelector('#showModalBtn')
       .addEventListener('click', function() {
         Modal.showModal().then(function(data) {
-          console.log(data);
+          console.log('Success callback: ' + data);
         }, function(error) {
-          console.log(error);
+          console.log('Failure callback: ' + error);
         });
       });
 
