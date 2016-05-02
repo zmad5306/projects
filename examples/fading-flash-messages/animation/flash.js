@@ -15,12 +15,28 @@ var FlashMessages = (function() {
 
     //attach listeners to remove element after animation has ended
     msgEl.addEventListener('animationend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
-    });
+    }, false);
 
     msgEl.addEventListener('webkitAnimationEnd', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
-    });
+    }, false);
+
+    msgEl.addEventListener('mozAnimationEnd', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.target.parentNode.removeChild(event.target);
+    }, false);
+
+    msgEl.addEventListener('oAnimationEnd', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.target.parentNode.removeChild(event.target);
+    }, false);
 
     //find messages element and add message to it
     document.querySelector('div.messages').appendChild(msgEl);

@@ -15,21 +15,33 @@ var FlashMessages = (function() {
 
     //attach listeners to remove element after transition has ended
     msgEl.addEventListener('transitionend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
-    });
+    }, false);
 
     msgEl.addEventListener('webkitTransitionend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
-    });
+    }, false);
 
     msgEl.addEventListener('mozTransitionend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
-    });
+    }, false);
+
+    msgEl.addEventListener('oTransitionend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.target.parentNode.removeChild(event.target);
+    }, false);
 
     //find messages element and add message to it
     document.querySelector('div.messages').appendChild(msgEl);
 
-    //fire transition after 4s
+    //fire transition after 3s
     setTimeout(function() {
       msgEl.className = msgEl.className += ' hide';
     }, 3000);
