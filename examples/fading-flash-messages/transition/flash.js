@@ -33,12 +33,12 @@ var FlashMessages = (function() {
     setTimeout(function() {
       msgEl.className = msgEl.className += ' hide';
     }, 3000);
-  };
+  }
 
   //return API
   return {
     showMessage: showMessage
-  }
+  };
 })();
 
 //document ready

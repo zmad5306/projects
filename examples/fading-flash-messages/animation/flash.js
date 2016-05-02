@@ -24,12 +24,12 @@ var FlashMessages = (function() {
 
     //find messages element and add message to it
     document.querySelector('div.messages').appendChild(msgEl);
-  };
+  }
 
   //return API
   return {
     showMessage: showMessage
-  }
+  };
 })();
 
 //document ready
