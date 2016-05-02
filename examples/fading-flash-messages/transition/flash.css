@@ -1,0 +1,48 @@
+html {
+  font-family: sans-serif;
+}
+
+.messages {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+.message {
+  border-style: solid;
+  border-width: thin;
+  padding: 1.5em;
+  border-radius: .25em;
+  margin: .75em;
+  opacity: 1;
+  -webkit-transition: opacity 1.5s ease-in;
+  -moz-transition: opacity 1.5s ease-in;
+  -o-transition: opacity 1.5s ease-in;
+  transition: opacity 1.5s ease-in;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.info{
+  background-color: #afd6e9;
+  border-color: #3b8eb5;
+}
+
+.error{
+  background-color: #f0a8a8;
+  border-color: #c43d3d;
+}
+
+.warn{
+  background-color: #FFFF82;
+  border-color: #FFFF00;
+}
+
+.success{
+  background-color: #c3e9af;
+  border-color: #55a12c;
+}

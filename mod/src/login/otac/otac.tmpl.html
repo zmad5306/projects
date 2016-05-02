@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<form ng-submit="ctrl.loginOtac()">
+		<span ng-show="ctrl.error" ng-cloak>{{ctrl.error}}</span>
+		<label for="otac">OTAC: </label><input type="text" name="otac" ng-model="ctrl.otac" />
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>

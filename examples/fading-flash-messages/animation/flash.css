@@ -1,0 +1,75 @@
+html {
+  font-family: sans-serif;
+}
+
+.messages {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+.message {
+  animation:message 2s 1;
+  -webkit-animation:message 2s 1;
+  -moz-animation:message 2s 1;
+
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+
+  animation-delay:2s;
+  -webkit-animation-delay:2s;
+  -moz-animation-delay:2s;
+
+  animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+
+  border-style: solid;
+  border-width: thin;
+  padding: 1.5em;
+  border-radius: .25em;
+  margin: .75em;
+}
+
+@keyframes message {
+    from {
+      opacity :1;
+    }
+    to {
+      opacity :0;
+      transform: translateY(-150%);
+    }
+}
+
+@-webkit-keyframes message {
+  from {
+    opacity :1;
+  }
+  to {
+    opacity :0;
+    transform: translateY(-150%);
+  }
+}
+
+.info{
+  background-color: #afd6e9;
+  border-color: #3b8eb5;
+}
+
+.error{
+  background-color: #f0a8a8;
+  border-color: #c43d3d;
+}
+
+.warn{
+  background-color: #FFFF82;
+  border-color: #FFFF00;
+}
+
+.success{
+  background-color: #c3e9af;
+  border-color: #55a12c;
+}
