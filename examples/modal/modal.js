@@ -2,18 +2,18 @@
   var Modal = (function() {
 
     var open = function() {
-      document.querySelector('div.modalMask').className = 'modalMask modalMaskOn';
+      document.querySelector('div.modal').className = 'modal modal-show';
 
       return new Promise(function (resolve, reject) {
         document.querySelector('#submitModalBtn')
           .addEventListener('click', function() {
-            document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
+            document.querySelector('div.modal').className = 'modal';
             resolve("Submitted modal!!!");
           }, false);
 
         document.querySelector('#cancelModalBtn')
           .addEventListener('click', function() {
-            document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
+            document.querySelector('div.modal').className = 'modal';
             reject("Cancelled modal!!!");
           }, false);
       });
