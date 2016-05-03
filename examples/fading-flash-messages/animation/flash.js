@@ -15,26 +15,18 @@ var FlashMessages = (function() {
 
     //attach listeners to remove element after animation has ended
     msgEl.addEventListener('animationend', function(event) {
-      event.preventDefault();
-      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
     }, false);
 
     msgEl.addEventListener('webkitAnimationEnd', function(event) {
-      event.preventDefault();
-      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
     }, false);
 
     msgEl.addEventListener('mozAnimationEnd', function(event) {
-      event.preventDefault();
-      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
     }, false);
 
     msgEl.addEventListener('oAnimationEnd', function(event) {
-      event.preventDefault();
-      event.stopPropagation();
       event.target.parentNode.removeChild(event.target);
     }, false);
 
@@ -53,26 +45,25 @@ var FlashMessages = (function() {
   document.addEventListener("DOMContentLoaded", function(event) {
 
     //handle button clicks, add a new message of the given type on click
-
     document.querySelector('#showInfoBtn')
       .addEventListener('click', function() {
         FlashMessages.showMessage('This is an info message', 'info');
-      });
+      }, false);
 
     document.querySelector('#showErrorBtn')
       .addEventListener('click', function() {
         FlashMessages.showMessage('This is an error message', 'error');
-      });
+      }, false);
 
     document.querySelector('#showWarnBtn')
       .addEventListener('click', function() {
         FlashMessages.showMessage('This is a warning message', 'warn');
-      });
+      }, false);
 
     document.querySelector('#showSuccessBtn')
       .addEventListener('click', function() {
         FlashMessages.showMessage('This is a success message', 'success');
-      });
+      }, false);
 
-  });
+  }, false);
 })();

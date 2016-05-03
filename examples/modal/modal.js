@@ -1,56 +1,37 @@
 var Modal = (function() {
-  var promise;
-  var resolve;
-  var reject;
-  var showModal = function() {
-    promise = new Promise(function(rs, rj) {
-      resolve = rs;
-      reject = rj;
-    });
+
+  var open = function() {
     document.querySelector('div.modalMask').className = 'modalMask modalMaskOn';
-    return promise;
-  };
-  var submitModal = function() {
-    if (promise) {
-      resolve('SUBMITTED!!!!');
-    }
-    document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
-  };
-  var cancelModal = function() {
-    if (promise) {
-      reject(new Error('CANCELLED!!!!'));
-    }
-    document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
+
+    return new Promise(function (resolve, reject) {
+      document.querySelector('#submitModalBtn')
+        .addEventListener('click', function() {
+          document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
+          resolve("Submitted modal!!!");
+        }, false);
+
+      document.querySelector('#cancelModalBtn')
+        .addEventListener('click', function() {
+          document.querySelector('div.modalMask').className = 'modalMask modalMaskOff';
+          reject("Cancelled modal!!!");
+        }, false);
+    });
   };
 
   return {
-    showModal: showModal,
-    submitModal: submitModal,
-    cancelModal: cancelModal
+    open: open
   };
 })();
 
 (function() {
   document.addEventListener("DOMContentLoaded", function(event) {
-
     document.querySelector('#showModalBtn')
       .addEventListener('click', function() {
-        Modal.showModal().then(function(data) {
-          console.log('Success callback: ' + data);
-        }, function(error) {
-          console.log('Failure callback: ' + error);
+        Modal.open().then(function(result) {
+          console.log(result);
+        }, function(result) {
+          console.log(result);
         });
-      });
-
-    document.querySelector('#submitModalBtn')
-      .addEventListener('click', function() {
-        Modal.submitModal();
-      });
-
-    document.querySelector('#cancelModalBtn')
-      .addEventListener('click', function() {
-        Modal.cancelModal();
-      });
-
-  });
+      }, false);
+  }, false);
 })();
