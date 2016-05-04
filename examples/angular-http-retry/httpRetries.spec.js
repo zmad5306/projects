@@ -45,7 +45,7 @@
         $timeout = _$timeout_;
       }));
 
-      it('does not retry on success', function(done) {
+      it('does not retry on success (200)', function(done) {
         $httpBackend.expectGET('/api/test').respond(200, 'the response');
 
         $http({
@@ -53,6 +53,27 @@
           url: '/api/test'
         }).then(function(response) {
           expect(response.status).toBe(200);
+          expect(response.data).toBe('the response');
+          done();
+        }, function(response) {
+          fail('should not have executed failure callback');
+          done();
+        });
+
+        $httpBackend.flush();
+
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+      });
+
+      it('does not retry on success (299)', function(done) {
+        $httpBackend.expectGET('/api/test').respond(299, 'the response');
+
+        $http({
+          method: 'GET',
+          url: '/api/test'
+        }).then(function(response) {
+          expect(response.status).toBe(299);
           expect(response.data).toBe('the response');
           done();
         }, function(response) {
@@ -130,6 +151,56 @@
         $httpBackend.expectGET('/api/test').respond(500, 'the response');
         $httpBackend.expectGET('/api/test').respond(500, 'the response two');
         $httpBackend.expectGET('/api/test').respond(500, 'the failed response');
+
+        $httpBackend.flush();
+        $httpBackend.flush();
+        $httpBackend.flush();
+
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+      });
+
+      it('fails after three failed (199) http calls', function(done) {
+        $http({
+          method: 'GET',
+          url: '/api/test'
+        }).then(function(response) {
+          fail('should not have executed success callback');
+          done();
+        }, function(response) {
+          expect(response.status).toBe(199);
+          expect(response.data).toBe('the failed response');
+          done();
+        });
+
+        $httpBackend.expectGET('/api/test').respond(199, 'the response');
+        $httpBackend.expectGET('/api/test').respond(199, 'the response two');
+        $httpBackend.expectGET('/api/test').respond(199, 'the failed response');
+
+        $httpBackend.flush();
+        $httpBackend.flush();
+        $httpBackend.flush();
+
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+      });
+
+      it('fails after three failed (300) http calls', function(done) {
+        $http({
+          method: 'GET',
+          url: '/api/test'
+        }).then(function(response) {
+          fail('should not have executed success callback');
+          done();
+        }, function(response) {
+          expect(response.status).toBe(300);
+          expect(response.data).toBe('the failed response');
+          done();
+        });
+
+        $httpBackend.expectGET('/api/test').respond(300, 'the response');
+        $httpBackend.expectGET('/api/test').respond(300, 'the response two');
+        $httpBackend.expectGET('/api/test').respond(300, 'the failed response');
 
         $httpBackend.flush();
         $httpBackend.flush();
