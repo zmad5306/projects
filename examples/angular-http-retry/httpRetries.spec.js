@@ -9,7 +9,7 @@
 
       return {
         'responseError': function(response) {
-          if (response.status === 500 && ++retries < 3) {
+          if (!(200 <= response.status && response.status < 300) && ++retries < 3) {
             //TODO add timeout, increment exponentially
             // var $timeout = $injector.get('$timeout');
             // return $timeout(function() {
@@ -52,6 +52,7 @@
           method: 'GET',
           url: '/api/test'
         }).then(function(response) {
+          expect(response.status).toBe(200);
           expect(response.data).toBe('the response');
           done();
         }, function(response) {
@@ -70,6 +71,7 @@
           method: 'GET',
           url: '/api/test'
         }).then(function(response) {
+          expect(response.status).toBe(200);
           expect(response.data).toBe('the response two');
           done();
         }, function(response) {
@@ -78,7 +80,7 @@
         });
 
         $httpBackend.expectGET('/api/test').respond(500, 'the response');
-        $httpBackend.expectGET('/api/test').respond(200, 'the response two')
+        $httpBackend.expectGET('/api/test').respond(200, 'the response two');
 
         $httpBackend.flush();
         $httpBackend.flush();
@@ -92,6 +94,7 @@
           method: 'GET',
           url: '/api/test'
         }).then(function(response) {
+          expect(response.status).toBe(200);
           expect(response.data).toBe('the response two');
           done();
         }, function(response) {
@@ -119,6 +122,7 @@
           fail('should not have executed success callback');
           done();
         }, function(response) {
+          expect(response.status).toBe(500);
           expect(response.data).toBe('the failed response');
           done();
         });
