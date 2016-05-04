@@ -63,7 +63,6 @@
 
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
-        $timeout.flush();
       });
 
       it('can succeed after one failed http call', function(done) {
@@ -80,6 +79,7 @@
 
         $httpBackend.expectGET('/api/test').respond(500, 'the response');
         $httpBackend.expectGET('/api/test').respond(200, 'the response two')
+
         $httpBackend.flush();
         $httpBackend.flush();
 
@@ -106,6 +106,7 @@
         $httpBackend.flush();
         $httpBackend.flush();
         $httpBackend.flush();
+
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
       });
@@ -129,6 +130,7 @@
         $httpBackend.flush();
         $httpBackend.flush();
         $httpBackend.flush();
+
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
       });
