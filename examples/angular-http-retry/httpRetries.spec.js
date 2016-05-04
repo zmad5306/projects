@@ -10,13 +10,19 @@
       return {
         'responseError': function(response) {
           if (!(200 <= response.status && response.status < 300) && ++retries < 3) {
-            //TODO add timeout, increment exponentially
+            //add timeout, increment exponentially
+            //I don't think the code below will work, this mehtod can eitehr
+            //call $q.reject() or return a promise... I think I need to 0return
+            //a new promise that has the timeout in it...
+
+            //http://stackoverflow.com/questions/32588822/retry-failed-requests-with-http-interceptor
+
             // var $timeout = $injector.get('$timeout');
             // return $timeout(function() {
             //   var $http = $injector.get('$http');
             //   return $http(response.config);
             // }, 0);
-            //http://stackoverflow.com/questions/32588822/retry-failed-requests-with-http-interceptor
+            
             var $http = $injector.get('$http');
             return $http(response.config);
           }
