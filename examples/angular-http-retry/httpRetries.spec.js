@@ -4,12 +4,17 @@
 
     var testHttp = angular.module('testHttp', []);
 
-    testHttp.factory('httpResponseErrorInterceptor', function($q, $injector) {
-      var retries = 0;
+    testHttp.factory('httpResponseErrorInterceptor', function($q, $injector, $timeout) {
+      //Angular docs for response interceptors
+      //https://docs.angularjs.org/api/ng/service/$http#interceptors
 
       return {
         'responseError': function(response) {
-          if (!(200 <= response.status && response.status < 300) && ++retries < 3) {
+          if (response.config.retries === undefined) {
+            response.config.retries = 0;
+          }
+
+          if (++response.config.retries < 3) {
             //add timeout, increment exponentially
             //I don't think the code below will work, this mehtod can either
             //call $q.reject() or return a promise... I think I need to return
