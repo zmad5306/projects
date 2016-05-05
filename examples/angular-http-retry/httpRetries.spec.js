@@ -4,37 +4,37 @@
 
     var testHttp = angular.module('testHttp', []);
 
-    testHttp.factory('httpResponseErrorInterceptor', function($q, $injector, $timeout) {
+    testHttp.factory('httpResponseErrorInterceptor', ['$q', '$injector', function($q, $injector) {
       //Angular docs for response interceptors
       //https://docs.angularjs.org/api/ng/service/$http#interceptors
 
       return {
         'responseError': function(response) {
           if (response.config.retries === undefined) {
+            //first failure, init to zero
             response.config.retries = 0;
           }
 
           if (++response.config.retries < 3) {
             //add timeout, increment exponentially
-            //I don't think the code below will work, this mehtod can either
-            //call $q.reject() or return a promise... I think I need to return
-            //a new promise that has the timeout in it...
+            //the code below won't work, this function can either
+            //call $q.reject() or return a promise... returning a promise adds
+            //it to the chain. this is per the link above...
 
-            //http://stackoverflow.com/questions/32588822/retry-failed-requests-with-http-interceptor
-
-            // var $timeout = $injector.get('$timeout');
             // return $timeout(function() {
             //   var $http = $injector.get('$http');
             //   return $http(response.config);
             // }, 0);
 
+            // have to use $injector to get $http provider it
+            // can't be injected by angular, it creates a circular dependency
             var $http = $injector.get('$http');
             return $http(response.config);
           }
           return $q.reject(response);
         }
       };
-    });
+    }]);
 
     testHttp.config(function($httpProvider) {
       $httpProvider.interceptors.push('httpResponseErrorInterceptor');
