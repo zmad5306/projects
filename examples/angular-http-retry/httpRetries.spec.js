@@ -256,7 +256,7 @@
                 $httpBackend.verifyNoOutstandingRequest();
             });
 
-            it('fails after three failed (199) http calls', function(done) {
+            it('fails after five failed (199) http calls', function(done) {
                 $http({
                     method: 'GET',
                     url: '/api/test'
@@ -293,7 +293,7 @@
                 $httpBackend.verifyNoOutstandingRequest();
             });
 
-            it('fails after three failed (300) http calls', function(done) {
+            it('fails after five failed (300) http calls', function(done) {
                 $http({
                     method: 'GET',
                     url: '/api/test'
