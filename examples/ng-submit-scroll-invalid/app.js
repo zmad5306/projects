@@ -18,9 +18,6 @@
             console.log('Form submitted!!!!');
 
             if (form && !form.$valid) {
-              event.stopImmediatePropagation();
-              event.preventDefault();
-
               var firstInvalid = element[0].querySelector('.ng-invalid');
               console.log(firstInvalid);
 
