@@ -1,0 +1,26 @@
+{
+  "name": "ng-submit-scroll-invalid",
+  "version": "1.0.0",
+  "description": "directive to scroll first invalid field into view after form submit",
+  "main": "index.html",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmad5306/projects.git"
+  },
+  "keywords": [
+    "angular",
+    "ng-submit"
+  ],
+  "author": "zmad5306",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zmad5306/projects/issues"
+  },
+  "homepage": "https://github.com/zmad5306/projects#readme",
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
+}

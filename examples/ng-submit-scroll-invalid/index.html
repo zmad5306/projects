@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="scrollInvalid">
+<head>
+  <title>ng-submit-scroll-invalid</title>
+</head>
+<body ng-controller="submitController as ctrl">
+  {{ctrl.test}}
+  <form ng-submit="ctrl.submit()" novalidate>
+    <input type="text" ng-model="ctrl.element1" required /><br />
+    <input type="text" ng-model="ctrl.element2" required /><br />
+    <input type="text" ng-model="ctrl.element3" required /><br />
+    <input type="text" ng-model="ctrl.element4" required /><br />
+    <input type="text" ng-model="ctrl.element5" required /><br />
+    <input type="text" ng-model="ctrl.element6" required /><br />
+    <input type="text" ng-model="ctrl.element7" required /><br />
+    <input type="text" ng-model="ctrl.element8" required /><br />
+    <input type="text" ng-model="ctrl.element9" required /><br />
+    <button type="submit">Submit</button>
+  </form>
+  <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
