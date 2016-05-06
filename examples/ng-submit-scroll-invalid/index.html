@@ -5,7 +5,8 @@
 </head>
 <body ng-controller="submitController as ctrl">
   {{ctrl.test}}
-  <form ng-submit="ctrl.submit()" novalidate>
+  <form ng-submit="ctrl.submit()" focus-on-first-invalid novalidate>
+    <input type="text" ng-model="ctrl.element0" required /><br />
     <input type="text" ng-model="ctrl.element1" required /><br />
     <input type="text" ng-model="ctrl.element2" required /><br />
     <input type="text" ng-model="ctrl.element3" required /><br />
@@ -15,6 +16,26 @@
     <input type="text" ng-model="ctrl.element7" required /><br />
     <input type="text" ng-model="ctrl.element8" required /><br />
     <input type="text" ng-model="ctrl.element9" required /><br />
+    <input type="text" ng-model="ctrl.element10" required /><br />
+    <input type="text" ng-model="ctrl.element11" required /><br />
+    <input type="text" ng-model="ctrl.element12" required /><br />
+    <input type="text" ng-model="ctrl.element13" required /><br />
+    <input type="text" ng-model="ctrl.element14" required /><br />
+    <input type="text" ng-model="ctrl.element15" required /><br />
+    <input type="text" ng-model="ctrl.element16" required /><br />
+    <input type="text" ng-model="ctrl.element17" required /><br />
+    <input type="text" ng-model="ctrl.element18" required /><br />
+    <input type="text" ng-model="ctrl.element19" required /><br />
+    <input type="text" ng-model="ctrl.element20" required /><br />
+    <input type="text" ng-model="ctrl.element21" required /><br />
+    <input type="text" ng-model="ctrl.element22" required /><br />
+    <input type="text" ng-model="ctrl.element23" required /><br />
+    <input type="text" ng-model="ctrl.element24" required /><br />
+    <input type="text" ng-model="ctrl.element25" required /><br />
+    <input type="text" ng-model="ctrl.element26" required /><br />
+    <input type="text" ng-model="ctrl.element27" required /><br />
+    <input type="text" ng-model="ctrl.element28" required /><br />
+    <input type="text" ng-model="ctrl.element29" required /><br />
     <button type="submit">Submit</button>
   </form>
   <script type="text/javascript" src="node_modules/angular/angular.js"></script>

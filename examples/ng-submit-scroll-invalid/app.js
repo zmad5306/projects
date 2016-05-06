@@ -6,14 +6,13 @@
     self.test = 'some data';
     self.submit = function() {
       console.log('Submitted!!!!');
-      console.log(self.element1);
+      console.log(self.element0);
     };
   }]);
 
-  m.directive('ngSubmit', [function() {
+  m.directive('focusOnFirstInvalid', [function() {
     return {
         require: "?form",
-        priority: -10,
         link: function(scope, element, attrs, form) {
           element.on("submit", function(event) {
             console.log('Form submitted!!!!');
