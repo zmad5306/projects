@@ -71,6 +71,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('does not retry on success (299)', function(done) {
@@ -92,6 +93,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('can succeed after one failed http call', function(done) {
@@ -117,6 +119,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('can succeed after two failed http calls', function(done) {
@@ -146,6 +149,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('can succeed after three failed http calls', function(done) {
@@ -179,6 +183,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('can succeed after four failed http calls', function(done) {
@@ -216,6 +221,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('fails after five failed http calls', function(done) {
@@ -254,6 +260,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('fails after five failed (199) http calls', function(done) {
@@ -291,6 +298,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
             it('fails after five failed (300) http calls', function(done) {
@@ -329,6 +337,7 @@
 
                 $httpBackend.verifyNoOutstandingExpectation();
                 $httpBackend.verifyNoOutstandingRequest();
+                $timeout.verifyNoPendingTasks();
             });
 
         });
