@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>protractor-mock-http</title>
+</head>
+<body ng-app="protractor-mock-http">
+  <div ng-controller = "TestController as ctrl">
+    <button type="button" ng-click="ctrl.sub()">Submit</button>
+    <div id="data">{{ctrl.data}}</div>
+  </div>
+  <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  <!--required for testing.. need to remove in build -->
+  <script type="text/javascript" src="node_modules/angular-mocks/angular-mocks.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
