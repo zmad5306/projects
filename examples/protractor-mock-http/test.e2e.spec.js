@@ -1,4 +1,6 @@
 (function() {
+  //https://github.com/nchaulet/httpbackend might be a better solution
+
   describe('mock http', function() {
     it('should call mock API', function() {
 
