@@ -94,7 +94,7 @@ public class App extends Thread {
 	        	if ("stop".equalsIgnoreCase(sc.nextLine())) {
 	        		System.out.println("Stopping...");
 	        		
-	        		//set condition to reading from buffer stops
+	        		//set condition so reading from buffer stops
 	        		//kill this thread
 	        		done = Boolean.TRUE;
 	        		Thread.currentThread().interrupt();
