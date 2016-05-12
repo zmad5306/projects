@@ -71,7 +71,7 @@ public class App extends Thread {
 				stream.close();
 			}
 			
-			//close input stream
+			//close output stream
 			if (null != outstream) {
 				System.out.println("Closing out stream...");
 				outstream.close();
