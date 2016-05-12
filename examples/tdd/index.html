@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+  <title>TODO</title>
+</head>
+<body ng-controller="TodoController as ctrl">
+  <ul>
+    <li ng-repeat="todo in ctrl.todos" class="item">{{todo}}</li>
+  </ul>
+  <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  <script type="text/javascript" src="src/app.js"></script>
+</body>
+</html>

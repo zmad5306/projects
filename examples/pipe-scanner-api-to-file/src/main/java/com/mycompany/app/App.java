@@ -34,6 +34,7 @@ public class App {
 				outstream.write(buffer, 0, len);
 				outstream.flush();
 				if (bytesRead > FILE_SPLIT_SIZE) {
+					bytesRead = 0;
 					outstream.close();
 					outstream = new FileOutputStream(new File(generateOutFileName()));
 				}
