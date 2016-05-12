@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class App {
 
@@ -14,26 +15,30 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 		URL feedUrl = new URL(FEED_URL);
-		final HttpURLConnection connection = (HttpURLConnection) feedUrl.openConnection();
-		InputStream stream = connection.getInputStream();
-		OutputStream outstream = new FileOutputStream(new File("test.mp3"));
+		URLConnection connection = (HttpURLConnection) feedUrl.openConnection();
+		
+		InputStream stream = null;
+		OutputStream outstream = null;
+		try {
+			stream = connection.getInputStream();
+			outstream = new FileOutputStream(new File("test.mp3"));
 
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				connection.disconnect();
+			byte[] buffer = new byte[4096];
+			int len;
+			while ((len = stream.read(buffer)) != -1) {
+				outstream.write(buffer, 0, len);
 			}
-		});
-
-		byte[] buffer = new byte[4096];
-		int len;
-		while ((len = stream.read(buffer)) != -1) {
-			stream.read(buffer);
-			outstream.write(buffer, 0, len);
+		} finally {
+			if (null != stream ) { 
+				stream.close();
+			}
+			
+			if (null != outstream) {
+				outstream.close();
+			}
 		}
 
-		stream.close();
-		outstream.close();
+		
 
 	}
 }
