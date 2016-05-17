@@ -5,7 +5,7 @@
 </head>
 <body ng-controller="submitController as ctrl">
   {{ctrl.test}}
-  <form ng-submit="ctrl.submit()" focus-on-first-invalid novalidate>
+  <form name="testForm" ng-submit="testForm.$valid && ctrl.submit()" focus-on-first-invalid novalidate> 
     <input type="text" ng-model="ctrl.element0" required /><br />
     <input type="text" ng-model="ctrl.element1" required /><br />
     <input type="text" ng-model="ctrl.element2" required /><br />

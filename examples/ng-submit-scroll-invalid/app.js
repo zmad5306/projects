@@ -5,6 +5,7 @@
     var self = this;
     self.test = 'some data';
     self.submit = function() {
+      console.log('in submit');
     };
   }]);
 
