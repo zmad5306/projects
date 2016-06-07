@@ -18,4 +18,6 @@ app.post('/test', function(req, res) {
   res.end('ran post');
 });
 
-app.listen(8081);
+app.listen(8081, function() {
+  console.log('server started on port 8081');
+});
