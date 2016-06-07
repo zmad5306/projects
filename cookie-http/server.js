@@ -6,7 +6,9 @@ app.use(cookieParser());
 app.use(express.static(__dirname));
 
 app.get('/test', function (req, res) {
-  res.cookie('chocolateChip', 'tasty', {httpOnly: true});
+  res.cookie('chocolateChip', 'tasty'
+  // , {httpOnly: true}
+  );
   res.end('ran get');
 });
 
