@@ -1,0 +1,16 @@
+{
+  "name": "graph-ql",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-graphql": "^0.5.3",
+    "graphiql": "^0.7.3",
+    "graphql": "^0.6.1",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  }
+}
