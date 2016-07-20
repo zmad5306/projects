@@ -1,0 +1,4 @@
+examples/spring-mvc-thymeleaf/.mvn/wrapper/maven-wrapper.jar
+examples/spring-mvc-thymeleaf/.mvn/wrapper/maven-wrapper.properties
+examples/spring-mvc-thymeleaf/mvnw
+examples/spring-mvc-thymeleaf/target/classes/application.properties
