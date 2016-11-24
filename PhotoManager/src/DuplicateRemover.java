@@ -4,18 +4,21 @@ import java.io.FilenameFilter;
 public class DuplicateRemover {
 
 	public static void main(String[] args) {
-		File dir = new File("E:\\Zach\\Pictures");
+		File dir = new File("E:\\Zach\\Pictures\\2016");
 		File[] duplicates = dir.listFiles(new FilenameFilter() {
 			
 			@Override
 			public boolean accept(File dir, String name) {
 				
-				if (name.contains("(2).")
+				if (name.contains("(1).")
+				|| name.contains("(2).")
 				|| name.contains("(3).")
 				|| name.contains("(4).")
 				|| name.contains("(5).")) {
 					
-					String baseName = name.replace("(2).", ".")
+					String baseName = name
+							.replace("(1).", ".")
+							.replace("(2).", ".")
 							.replace("(3).", ".")
 							.replace("(4).", ".")
 							.replace("(5).", ".");

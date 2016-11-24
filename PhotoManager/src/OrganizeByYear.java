@@ -38,12 +38,23 @@ public class OrganizeByYear {
 						if (!yearDir.exists()) {
 							yearDir.mkdir();
 						}
+						
 						File nFile = new File(yearDir, file.getName());
-						if (!nFile.exists()) {
-							file.renameTo(nFile);
+						for (int i = 0; 0 < 10 && nFile.exists(); i++) {
+							int index = file.getName().lastIndexOf(".");
+							String ext = file.getName().substring(index);
+							
+							String fn = file.getName().substring(0, index);
+							
+							nFile = new File(yearDir, fn + "(" + Integer.valueOf(i+1) + ")" + ext);
+						}
+						
+						if (nFile.exists()) {
+							System.out.println("skipping (name conflict): " + file.getName());
 						}
 						else {
-							System.out.println("skipping (name conflict): " + file.getName());
+//							System.out.println(nFile.getName());
+							file.renameTo(nFile);
 						}
 					}
 					//System.out.println(date);
