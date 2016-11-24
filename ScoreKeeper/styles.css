@@ -1,0 +1,89 @@
+.container {
+    position:fixed !important;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    font-family: Arial, Helvetica, sans-serif
+}
+.header {
+    height: 7vh;
+}
+.title {
+    margin-left: 1.5vmin;
+}
+.menu {
+    position: absolute;
+    top:0;
+    right:0;
+}
+.menu-item {
+    display: inline-block;
+    margin-left: 1.5vmin;
+    margin-right: 1.5vmin;
+}
+.tiles {
+    overflow-x: hidden;
+    white-space: nowrap;
+    width: 100vw;
+    border-spacing: 1vmin;
+    overflow: scroll;
+}
+.tile {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1vmin;
+    border-color: black;
+    border-radius: 10px;
+    border: solid;
+    border-width: 2px;
+    width: 12vmin;
+    height: 12vmin;
+    font-size: 7vmin;
+    text-align: center;
+    
+}
+.tile-content {
+    display:table;
+    margin: 0 auto;
+}
+.tile-player-name {
+}
+.tile-player-score {
+}
+.player {
+    border-color: black;
+    border-radius: 10px;
+    border: solid;
+    border-width: 2px;
+    margin: 1vmin;
+    padding: 1vmin;
+    height: 73vh;
+}
+.player-content {
+    display: table-cell;
+    text-align: center;
+    width: 95vw;
+}
+.player-name {
+    font-size: 20vmin;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: inherit;
+}
+.player-score {
+    font-size: 20vmin;
+}
+.player-points-to-add-input {
+    font-size: 15vmin;
+    width: 90vw;
+    margin-top: 5vmin;
+    margin-bottom: 2.5vmin;
+}
+.player-add-points-button {
+    font-size: 15vmin;
+    width: 90vw;
+    margin-top: 2.5vmin;
+    margin-bottom: 5vmin;
+}
