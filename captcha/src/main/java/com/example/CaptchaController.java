@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -26,6 +29,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class CaptchaController {
 	
+	@Value("${validationUrl}")
+	private String validationUrl;
+	
+	@Value("${secret}")
+	private String secret;
+	
     @RequestMapping(value="/captcha", method=RequestMethod.GET)
     public String captchaGet(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
@@ -33,19 +42,19 @@ public class CaptchaController {
     }
     
     @RequestMapping(value="/captcha", method=RequestMethod.POST)
-    public String captchaPost(@ModelAttribute("g-recaptcha-response") String captchaResponse, Model model) throws JsonParseException, JsonMappingException, IOException {
+    public String captchaPost(@ModelAttribute("g-recaptcha-response") String captchaResponse, Model model, HttpServletRequest req) throws JsonParseException, JsonMappingException, IOException {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
     	MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-    	map.add("secret", "	6LfR0B0UAAAAAIBZM3zUW08Xd-pwRX9JNm3lqAbL");
+    	map.add("secret", secret);
     	map.add("response", captchaResponse);
-    	map.add("remoteip", "xx.xxx.xxx.xxx");
+    	map.add("remoteip", req.getRemoteAddr());
 
     	HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
 
     	RestTemplate restTemplate = new RestTemplate();
-    	ResponseEntity<String> response = restTemplate.postForEntity( "https://www.google.com/recaptcha/api/siteverify", request , String.class );
+    	ResponseEntity<String> response = restTemplate.postForEntity( validationUrl, request , String.class );
     	
     	ObjectMapper mapper = new ObjectMapper();
     	Map<String, Object> responseMap = new HashMap<String, Object>();
