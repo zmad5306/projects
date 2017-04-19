@@ -27,13 +27,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CaptchaController {
 	
     @RequestMapping(value="/captcha", method=RequestMethod.GET)
-    public String greetingGet(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+    public String captchaGet(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "captcha";
     }
     
     @RequestMapping(value="/captcha", method=RequestMethod.POST)
-    public String greetingPost(@ModelAttribute("g-recaptcha-response") String captchaResponse, Model model) throws JsonParseException, JsonMappingException, IOException {
+    public String captchaPost(@ModelAttribute("g-recaptcha-response") String captchaResponse, Model model) throws JsonParseException, JsonMappingException, IOException {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
